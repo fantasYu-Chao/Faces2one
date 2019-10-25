@@ -24,6 +24,8 @@ Still great potential for acceleration.
 
 ### Usage
 
+Download the trained model at [BaiduDrive](https://pan.baidu.com/s/10vuV7m00OHLcsihaC-Adsw) or [GoogleDrive](https://drive.google.com/file/d/1UoE-XuW1SDLUjZmJPkIZ1MLxvQFgmTFH/view?usp=sharing), and put it into `Data/net-data`
+
 To run the code:
 
    `python faces2one_gpu.py -s videos/source_video.avi -r videos/reference_video.avi -o videos/new_video.avi`
