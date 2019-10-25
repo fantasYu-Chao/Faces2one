@@ -15,6 +15,9 @@ from mesh.render import render_colors as render_texture
 OUTPUT_FPS = 30
 FOURCC = cv2.VideoWriter_fourcc(*'MPEG')
 
+WINDOW_SIZE = 3
+STEEP = 0.95
+v_list = []
 
 def face_exchanging(prn, src, ref, h, w, prev_s, prev_r, i):
     # 3d reconstruction
@@ -23,6 +26,20 @@ def face_exchanging(prn, src, ref, h, w, prev_s, prev_r, i):
     if s == 0:
         return None, prev_s, prev_r, s
     vertices = prn.get_vertices(pos)
+    
+    # smooth vertices
+    if WINDOW_SIZE > 1:
+        if  i == 1:
+            global v_list
+            v_list.append(vertices)
+        if len(v_list) <= WINDOW_SIZE:           
+            v_list = np.concatenate(([vertices], v_list), axis=0)
+        else:
+            v_list[-1] = vertices                      
+            v_list = np.roll(v_list, 1, axis=0)                      
+            vertices = prn.softmax_smooth2(v_list, STEEP)
+            v_list[0] = vertices
+    
     image = src/255.
     texture = cv2.remap(image, pos[:,:,:2].astype(np.float32), None, interpolation=cv2.INTER_NEAREST, borderMode=cv2.BORDER_CONSTANT,borderValue=(0))
 
@@ -90,6 +107,8 @@ def main(args):
 
         ret_s, frame_s = cap_s.read()
         ret_r, frame_r = cap_r.read()
+        #frame_s = exposure.adjust_gamma(frame_s, 0.67).astype(np.uint8)
+        #frame_r = exposure.adjust_gamma(frame_r, 0.5).astype(np.uint8)
         
         print(frame_no, "processing")
 
@@ -98,11 +117,12 @@ def main(args):
 
         if s == 0:
             print("skip one frame.")
-
+            #frame_s = exposure.adjust_gamma(frame_s, 1.5)
             videoWriter.write(frame_s)
             cv2.imwrite("./videos/detect_fail/"+str(frame_no)+".jpg", frame_s)
             continue
-
+            
+        #merged_frame = exposure.adjust_gamma(merged_frame, 1.5)
         videoWriter.write(merged_frame)
 
     videoWriter.release()
