@@ -1,3 +1,7 @@
+'''
+Author: Yao Feng
+'''
+
 import numpy as np
 import os
 from skimage.io import imread, imsave
@@ -185,6 +189,24 @@ class PRN:
 
         return colors
 
+    def softmax_smooth2(self, arr_2d, steep):
+        # matrix: numpy matrix
+        # steep: close to 0 means taking average, high steep means only looking at new data
+
+        n_array = np.arange(1, arr_2d.shape[0] + 1)
+        numerator = np.apply_along_axis(self.softmax_numerator, 0, arr_2d, n_array, steep)
+        denominator = np.sum(np.exp(-steep * n_array))
+        
+        smooth_array = numerator / denominator
+
+        return smooth_array
+
+
+    def softmax_numerator(self, row, n_array, steep=1):
+       
+        numerator = np.sum(np.exp(-steep * n_array) * row)
+
+        return numerator
 
 
 
