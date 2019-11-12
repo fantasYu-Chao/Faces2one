@@ -31,7 +31,7 @@ Modify the consistence of 3 channels of new_mask1. Merge the images by mask_sum.
 Compatible with smooth in "storyboard"(different scenes) by setting the frame numbers of which the scene changes. 
 
 2019-11-12
-Improve the texture deformation from different shapes of mouth
+Improve the texture deformation from different shapes of mouth.
 '''
 
 import os
