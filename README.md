@@ -39,7 +39,7 @@ To run the code:
 
 * 2019/11/07 compatible with smooth in "storyboard".
 
-* 2019/10/22 improve the texture deformation.
+* 2019/11/12 improve the texture deformation.
 
 
 ## Citation
