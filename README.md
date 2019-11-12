@@ -35,6 +35,12 @@ To run the code:
 
 * 2019/10/22 add smooth function on vertices.
 
+* 2019/11/06 modify the consistence of 3 channels of mask.
+
+* 2019/11/07 compatible with smooth in "storyboard".
+
+* 2019/10/22 improve the texture deformation.
+
 
 ## Citation
 
