@@ -109,7 +109,8 @@ def face_exchanging(prn, src, ref, h, w, prev_s, prev_r, i):
   
     new_colors = prn.get_colors_from_texture(new_texture)
     #new_image = render_texture(vertices.T, new_colors.T, prn.triangles.T, h, w, c = 3)
-
+    '''
+    # RETARGET MODE 1
     vertices_ref = prn.get_vertices(ref_pos)
     vertices_ref_front = frontalize(vertices_ref)    
     vertices_src_front = frontalize(vertices)
@@ -120,6 +121,12 @@ def face_exchanging(prn, src, ref, h, w, prev_s, prev_r, i):
     vertices_src_front[:,:] = vertices_ref_front[:,:]
     vertices_src_front_homo = np.hstack((vertices_src_front, np.ones([vertices_src_front.shape[0],1])))
     vertices = vertices_src_front_homo.dot(P_inv.T)
+    '''
+    # RETARGET MODE 2
+    vertices_ref = prn.get_vertices(ref_pos)
+    vertices_ref_homo = np.hstack((vertices_ref, np.ones([vertices_ref.shape[0], 1])))
+    P_inv = np.linalg.lstsq(vertices_ref_homo, vertices)[0].T
+    vertices = vertices_ref_homo.dot(P_inv.T)
 
     new_image = render_texture(vertices, prn.triangles, new_colors, h, w, c = 3) # crender
     #cv2.imwrite("videos/frames_select/" + str(i) + "_newimage.jpg", 255*new_image)
