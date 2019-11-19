@@ -52,10 +52,10 @@ def face_exchanging(prn, src, ref, h, w, prev_s, prev_r, i):
     ref_texture = cv2.remap(ref_image, ref_pos[:,:,:2].astype(np.float32), None, interpolation=cv2.INTER_NEAREST, borderMode=cv2.BORDER_CONSTANT,borderValue=(0))
     new_texture = ref_texture*mask[:,:,np.newaxis]
 
-    # remaping (abandoned now, use new mask instead.)
-    #vis_colors = np.ones((vertices.shape[0], 1))
-    #face_mask = render_texture(vertices, prn.triangles, vis_colors, h, w, c = 1)
-    #face_mask = np.squeeze(face_mask > 0).astype(np.float32)
+    # remaping
+    vis_colors = np.ones((vertices.shape[0], 1))
+    face_mask = render_texture(vertices, prn.triangles, vis_colors, h, w, c = 1)
+    face_mask = np.squeeze(face_mask > 0).astype(np.float32)
   
     new_colors = prn.get_colors_from_texture(new_texture)
     new_image = render_texture(vertices, prn.triangles, new_colors, h, w, c = 3)
