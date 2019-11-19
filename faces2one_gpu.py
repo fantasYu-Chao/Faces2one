@@ -45,7 +45,7 @@ from skimage.io import imread, imsave
 from skimage.transform import rescale, resize
 from scipy import signal
 
-from api_smooth import PRN
+from api import PRN
 #from utils.render import render_texture
 from utils.rotate_vertices import frontalize
 from mesh.render import render_colors as render_texture
