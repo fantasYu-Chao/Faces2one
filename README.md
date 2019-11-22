@@ -13,10 +13,6 @@ If the exposure doesn't settle it down, it should go to the worst situation, nee
 
 Still great potential for acceleration.
 
-<p align="center"> 
-<img src="videos/detect_fail/performance.gif">
-</p>
-
 
 ### To be improved
 
@@ -44,6 +40,12 @@ To run the code:
 * 2019/11/07 compatible with smooth in "storyboard".
 
 * 2019/11/12 improve the texture deformation.
+
+
+## Demonstration
+<p align="center"> 
+<img src="videos/detect_fail/performance.gif">
+</p>
 
 
 ## Citation
