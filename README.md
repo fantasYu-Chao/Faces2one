@@ -5,7 +5,7 @@ This is used for generating a new video, given the source video (e.g. avatar act
 On basis of Yao Feng's work on texture changing, some improvements were made to inhance the performance.
 In condition GPU is on, applying rendering in C++, and without much remarkable time consuming method in cv, 
 the process speed on single frame varies, depending mainly on face detection (~70%, dlib utilized currently), 
-cropping (~15%), etc. 1.0 FPS on average, with GeForce GTX 1060.
+cropping (~15%), etc. making it around 1.0 FPS on average, with GeForce GTX 1060.
 
 When face dection fails, it may due to environment light, head orientation, face occlusion or camera distance.
 In failing cases, try turning on the exposure adjustment. It would take extra ~400ms on every frame though. 
