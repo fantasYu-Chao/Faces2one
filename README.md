@@ -13,6 +13,10 @@ If the exposure doesn't settle it down, it should go to the worst situation, nee
 
 Still great potential for acceleration.
 
+<p align="center"> 
+<img src="videos/performance.gif">
+</p>
+
 
 ### To be improved
 
