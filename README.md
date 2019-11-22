@@ -14,14 +14,6 @@ If the exposure doesn't settle it down, it should go to the worst situation, nee
 Still great potential for acceleration.
 
 
-### To be improved
-
-* #### Unstable on texture
-  
-  
-* #### Texture deformation from different expression
-
-
 ### Usage
 
 Download the trained model at [BaiduDrive](https://pan.baidu.com/s/10vuV7m00OHLcsihaC-Adsw) or [GoogleDrive](https://drive.google.com/file/d/1UoE-XuW1SDLUjZmJPkIZ1MLxvQFgmTFH/view?usp=sharing), and put it into `Data/net-data`
@@ -29,7 +21,15 @@ Download the trained model at [BaiduDrive](https://pan.baidu.com/s/10vuV7m00OHLc
 To run the code:
 
    `python faces2one_gpu.py -s videos/source_video.avi -r videos/reference_video.avi -o videos/new_video.avi`
-   
+
+
+### To be improved
+
+* #### Unstable on texture
+  
+  
+* #### Texture deformation from different expression
+
 
 ## Update
 
@@ -43,6 +43,7 @@ To run the code:
 
 
 ## Demonstration
+
 <p align="center"> 
 <img src="videos/detect_fail/performance.gif">
 </p>
@@ -64,4 +65,4 @@ If you use this code, please consider citing:
 
 ## Acknowledgements
 
-- Thanks [YadiraF](https://github.com/YadiraF/PRNet) for the idea of rendering and contributions on speed up methods in C.
+- Thanks [YadiraF](https://github.com/YadiraF/PRNet) for the idea of rendering and contributions on speed-up methods in C.
